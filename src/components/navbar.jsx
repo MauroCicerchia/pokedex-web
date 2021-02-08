@@ -28,7 +28,7 @@ export default function Navbar() {
 
 	return (
 		<HideOnScroll>
-			<AppBar position="sticky" color="white">
+			<AppBar position="sticky" color="default">
 				<Toolbar>
 					<img src={logo} alt="logo" className={classes.logo} />
 					<IconButton

@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
     type: {
         marginLeft: theme.spacing(0.5),
-        marginRight: theme.spacing(0.5),
+		marginRight: theme.spacing(0.5),
         color: "#FCFCFA",
         [theme.breakpoints.down('sm')]: {
 			height: "2rem",
@@ -80,8 +80,7 @@ export default function PokemonCard(props) {
 }
 
 function createCardChips(types, classes) {
-    console.log(classes)
     return types.map((type) => (
-        <Chip label={_.capitalize(type)} className={`${classes.type} ${classes[type]}`} />
+        <Chip key={type} label={_.capitalize(type)} className={`${classes.type} ${classes[type]}`} />
     ))
 }
