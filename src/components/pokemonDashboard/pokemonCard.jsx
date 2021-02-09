@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(2),
 		width: "6rem",
 		height: "6rem",
-		border: "0.3rem solid",
+		border: "0.2rem solid",
 		borderColor: "red",
 		borderRadius: "50%",
 	},
@@ -45,8 +45,9 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(0.5),
         color: "#FCFCFA",
         [theme.breakpoints.down('sm')]: {
-			height: "2rem",
-			width: "4rem"
+			height: "1.7rem",
+			width: "4rem",
+			fontSize: "0.7rem"
 		},
 		[theme.breakpoints.up('md')]: {
 			height: "2rem",
@@ -64,10 +65,10 @@ export default function PokemonCard(props) {
 			<Avatar alt={props.name} src={props.sprite} className={classes.sprite} />
 			<div className={classes.details}>
 				<CardContent className={classes.content}>
-					<Typography component="h5" variant="h5">
+					<Typography variant="subtitle1" color="textSecondary">
 						#{props.id}
 					</Typography>
-					<Typography variant="subtitle1" color="textSecondary">
+					<Typography component="h5" variant="h5">
 						{_.capitalize(props.name)}
 					</Typography>
 				</CardContent>

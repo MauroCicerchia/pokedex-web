@@ -1,8 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Switch from "@material-ui/core/Switch";
+import Brightness6Icon from "@material-ui/icons/Brightness6";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -13,35 +14,65 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 	},
+	darkModeSwitch: {
+		marginRight: theme.spacing(2),
+	},
 	menuButton: {
-		marginLeft: "auto",
+		marginRight: theme.spacing(2),
 	},
 	logo: {
 		height: "auto",
 		width: "7rem",
 		marginRight: theme.spacing(2),
 	},
+	section: {
+		marginLeft: "auto",
+		display: "flex",
+	},
+	darkModeContainer: {
+		display:  "flex",
+		alignItems: "center",
+		marginRight: theme.spacing(1),
+	},
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
 	const classes = useStyles();
 
 	return (
 		<HideOnScroll>
-			<AppBar position="sticky" color="default">
+			<AppBar position="sticky" color="default" className={classes.root}>
 				<Toolbar>
 					<img src={logo} alt="logo" className={classes.logo} />
-					<IconButton
-						edge="start"
-						className={classes.menuButton}
-						color="secondary"
-						aria-label="menu"
-					>
-						<MenuIcon />
-					</IconButton>
+					<div className={classes.section}>
+						<DarkModeSwitch {...props} />
+						<IconButton
+							edge="start"
+							className={classes.menuButton}
+							color="secondary"
+							aria-label="menu"
+						>
+							<MenuIcon />
+						</IconButton>
+					</div>
 				</Toolbar>
 			</AppBar>
 		</HideOnScroll>
+	);
+}
+
+function DarkModeSwitch(props) {
+	const classes = useStyles();
+	return (
+		<div className={classes.darkModeContainer}>
+			<Brightness6Icon color={props.darkMode ? "secondary" : "default"} fontSize="small" />
+			<Switch
+				checked={props.darkMode}
+				onChange={props.onDarkModeToggle}
+				name="toggleDarkMode"
+				className={classes.darkModeSwitch}
+			/>
+		</div>
 	);
 }
 
