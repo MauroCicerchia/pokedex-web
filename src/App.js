@@ -28,7 +28,7 @@ function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Paper>
+			<Paper variant="outlined" square>
 				<Navbar darkMode={darkMode} onDarkModeToggle={toggleDarkMode} />
 				<PokemonDashboard />
 			</Paper>
